@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signin } from '../components/auth'
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -25,6 +27,7 @@ const Login = () => {
             .then(data => {
                 if (data.error) {
                     setValues({ ...values, error: data.error })
+                    toast.error("Invalid Details")
                 }
                 else {
 
@@ -34,14 +37,10 @@ const Login = () => {
                 }
             })
     }
-
-
-
-
-
     return (
         <>
             <div className="container">
+                <h1 className='d-flex justify-content-center'>Login</h1>
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-6">
                         <form>

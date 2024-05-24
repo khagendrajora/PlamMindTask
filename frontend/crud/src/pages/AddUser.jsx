@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import { API } from '../Config/config'
+import 'react-toastify/dist/ReactToastify.css';
+import { Nav } from '../components/Nav';
 
 const AddUser = () => {
     const [userData, setData] = useState({
@@ -13,8 +15,6 @@ const AddUser = () => {
         userName,
         email,
         password
-
-
     } = userData
 
     const handleChange = (name) => (event) => {
@@ -40,20 +40,6 @@ const AddUser = () => {
                 }
             }
 
-            // try {
-            //     const formData = new FormData();
-            //     formData.append('userName', userData.userName);
-            //     formData.append('email', userData.email);
-            //     formData.append('password', userData.password);
-
-            //     const Config = {
-            //         headers: {
-            //             "Content-Type": "multipart/form-data",
-            //         }
-
-            //     }
-
-
             const response = await axios.post(`${API}/userRegister`, data, Config);
             if (response) {
                 toast.success("USer added successfully")
@@ -74,7 +60,9 @@ const AddUser = () => {
 
     return (
         <>
-            {/* <ToastContainer theme='colored' position='top-right' /> */}
+
+            <ToastContainer theme='colored' position='top-right' />
+            <Nav />
             <div className='uploaduser-container'>
                 <form className='upload-userForm' encType="multipart/form-data" method="post" >
                     <h1 className='page-name'>Add New User</h1>
@@ -100,7 +88,7 @@ const AddUser = () => {
                             value={password} />
                     </div>
 
-                    <button className="btn btn-primary" onClick={handleSubmit}>Add User</button>
+                    <button className="btn btn-primary mt-4" onClick={handleSubmit}>Add User</button>
                 </form>
             </div>
 

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { API } from '../Config/config'
 import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { Nav } from '../components/Nav'
 
 const EditUser = () => {
     const params = useParams()
@@ -32,26 +34,24 @@ const EditUser = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const formData = new FormData()
-            formData.append('userName', userName)
-            formData.append('email', email)
+            const data = {
+                userName: userName,
+                email: email
 
+            };
 
-            const config = {
+            const Config = {
                 headers: {
-                    "Content-Type": "multipart/form-data"
-
+                    "Content-Type": "application/json",
                 }
             }
-
-            const response = await axios.put(`${API}/userupdate/${id}`, formData, config)
+            const response = await axios.put(`${API}/userupdate/${id}`, data, Config)
             if (response) {
                 toast.success("User Details Updated")
             }
             else {
                 toast.error("Failed TO Update")
             }
-
         }
         catch (err) {
             console.error(err)
@@ -63,6 +63,7 @@ const EditUser = () => {
 
 
             <ToastContainer theme='colored' position='top-right' />
+            <Nav />
             <div className="container">
 
                 <form className="shadow p-3">

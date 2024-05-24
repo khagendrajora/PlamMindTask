@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { forgetpassword } from '../components/auth'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ForgetPassword = () => {
     const [email, setEmail] = useState('')
@@ -13,12 +15,14 @@ const ForgetPassword = () => {
                 }
                 else {
                     setEmail('')
+                    toast.success("Reset Link send to Email")
                 }
             })
             .catch(err => console.log(err))
     }
     return (
         <>
+            <ToastContainer theme='colored' position='top-right' />
             <div className='container my-5'>
                 <div className='row d-flex justify-content-center'>
                     <div className="col-md-5">

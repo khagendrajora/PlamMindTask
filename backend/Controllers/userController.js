@@ -94,13 +94,15 @@ exports.forgetPwd = async (req, res) => {
             if (!token) {
                 res.status(400).json({ error: 'token not generated' })
             }
-            // const url = process.env.FRONTEND_URL + '\/resetpassword\/' + token.token
+            const url = process.env.FN + '\/resetpassword\/' + token.token
             sendEmail({
                 from: 'no-reply@PlamMind.com',
                 to: data.email,
                 subject: "Password reset link",
                 text: `hello \n your password reset link is \n
                 http://${req.headers.host}/api/resetpassword/${token.token}`,
+                html: `
+                <a href='${url}'>Click to reset password</a>`
             })
 
         },

@@ -5,6 +5,8 @@ import UserDetail from './pages/UserDetail';
 import EditUser from './pages/EditUser';
 import AddUser from './pages/AddUser';
 import Login from './pages/Login';
+import ForgetPassword from './pages/ForgetPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path='/edituser/:user_id' element={<EditUser />} />
           <Route path='/adduser' element={<AddUser />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/forgetpassword' element={<ForgetPassword />} />
+          <Route path='/resetpassword/:token' element={<ResetPassword />} />
 
 
 

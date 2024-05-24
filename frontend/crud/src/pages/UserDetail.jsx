@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { API } from '../Config/config'
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { Nav } from '../components/Nav'
 
 const UserDetail = () => {
     const navigate = useNavigate()
@@ -22,11 +24,12 @@ const UserDetail = () => {
     }, [params.user_id])
 
     const userEdit = id => {
-        navigate('')
+        navigate(`/edituser/${id}`)
     }
     return (
         <>
             <ToastContainer theme='colored' position='top-right' />
+            <Nav />
             <div className='user-detail'>
                 <div className='subUser-detail'>
 

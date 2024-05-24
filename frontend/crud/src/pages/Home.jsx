@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { ToastContainer, toast } from 'react-toastify'
-
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import { API } from '../Config/config'
 import { FaTrash, FaPenAlt, FaBook } from 'react-icons/fa';
+import { Nav } from '../components/Nav';
 
 export const Home = () => {
     const [user, setUser] = useState([])
@@ -20,7 +21,7 @@ export const Home = () => {
     })
 
     const Delete = id => {
-        const confirmed = window.confirm('Are you sur you want to delete this food item')
+        const confirmed = window.confirm('Are you sur you want to delete the user')
         if (confirmed) {
             axios.delete(`${API}/userdelete/${id}`)
                 .then(res => {
@@ -42,25 +43,13 @@ export const Home = () => {
     const Add = () => {
         navigate('/adduser')
     }
-    const handleLogout = () => {
-        axios.post(`${API}/signout`)
-            .then(navigate('/login'))
-    }
+
 
     return (
         <>
             <ToastContainer theme='colored' position='top-center' />
 
-            <nav className="navbar bg-body-tertiary">
-                <div className="container-fluid">
-                    <Link className="navbar-brand">User Management System</Link>
-                    <form className="d-flex" role="search">
-                        <button className='btn btn-outline-primary me-3' onClick={handleLogout}>Logout</button>
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </nav>
+            <Nav />
 
             <div className='item-list'>
                 <div className='data'>
