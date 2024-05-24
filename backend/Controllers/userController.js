@@ -140,4 +140,51 @@ exports.resetPwd = async (req, res) => {
         })
 }
 
+exports.userDetail = async (req, res) => {
+
+    const user = await User.findById(req.params.id)
+    if (!user) {
+        return res.status(400).json({ error: "invalid" })
+    }
+    res.send(user)
+}
+
+exports.userList = async (req, res) => {
+
+    const userList = await User.find()
+    if (!userList) {
+        return res.status(400).json({ error: 'List not found' })
+    }
+    res.send(userList)
+}
+
+
+exports.userUpdate = async (req, res) => {
+    const user = await User.findByIdAndUpdate(req.params.id, {
+        userName: req.body.userName,
+        email: req.body.email
+
+    },
+        { new: true })
+    if (!user) {
+        return res.status(400).json({ error: "Update Failed" })
+    }
+    res.send(user)
+}
+
+exports.deleteUser = async (req, res) => {
+    const id = req.params.id
+    User.findByIdAndDelete(id)
+        .then((item) => {
+            if (!item) {
+                return res.status(400).json({ error: "USer not found" })
+
+            }
+            else {
+                return res.status(200).json({ message: 'User deleted' })
+            }
+        }).catch(err => {
+            return res.status(400).json({ error: err })
+        })
+}
 
