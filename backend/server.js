@@ -12,6 +12,9 @@ const port = 5000
 
 app.use(bodyParser.json())
 
+const userRegister = require('./Routes/userRoute')
+app.use('/api', userRegister)
+
 
 
 app.listen(port, () => {
