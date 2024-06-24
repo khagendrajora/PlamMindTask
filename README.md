@@ -1,4 +1,5 @@
 ﻿# PlamMindTask
+![Division of package after selection](https://github.com/khagendrajora/PlamMindTask/assets/117736874/6a6b93d2-689e-4522-8ff6-ced70bbab7a7)
 
 ![Screenshot (62)](https://github.com/khagendrajora/PlamMindTask/assets/117736874/3eeb02ec-b7fa-4ea1-b5db-945d2fdeaccb)
 ![Screenshot (51)](https://github.com/khagendrajora/PlamMindTask/assets/117736874/dba7ae10-94e8-46ea-b6d8-be2a64cff746)
